@@ -10,7 +10,7 @@ A simple Simon Game built using HTML, CSS, JavaScript, and jQuery. The game chal
 - Interactive buttons with sound and animation
 - Game Over detection on wrong input
 - Restart functionality with high score tracking
-- Fully mouse controlled
+- Button-based start support for touch and desktop
 
 ---
 
@@ -25,12 +25,12 @@ A simple Simon Game built using HTML, CSS, JavaScript, and jQuery. The game chal
 
 ## 🕹️ How to Play
 
-1. Press any key to start the game.
+1. Tap or click the **Start Game** button to begin.
 2. Watch the pattern of flashing buttons and sounds.
 3. Repeat the pattern by clicking the buttons in the correct order.
 4. The pattern gets longer each round — how long can you last?
 5. If you make a mistake, the game ends and your score is displayed.
-6. Press any key again to restart.
+6. Use the **Start Game** button again after game over to restart.
 
 ---
 
@@ -52,7 +52,7 @@ simon-game/
 
 ## 🧠 Future Improvements
 
-- Mobile responsiveness
+- Improved responsive layout for phones and laptops
 - Visual score history
 - Difficulty settings
 - Sound toggle button
