@@ -1,25 +1,19 @@
 var buttonColors = ["red", "blue", "green", "yellow"]
 
 var gamePattern = []
-
 var userClickedPattern = []
-
-var userChoosenColor
-
 var level = 0
-
 var started = false
-
 var highScore = 0
-
 var clickAble = false
 
 function nextSequence() {
     level++
-    $("h1").text("Level " + level)
+    $("#level-title").text("Level " + level)
+
     var randomNumber = Math.floor(Math.random() * 4)
     var randomChoosenColor = buttonColors[randomNumber]
-    console.log(randomChoosenColor)
+
     gamePattern.push(randomChoosenColor)
     animation(randomChoosenColor)
     sound(randomChoosenColor)
@@ -31,9 +25,7 @@ function animation(x) {
     $("." + x).addClass("pressed")
     setTimeout(function () {
         $("." + x).removeClass("pressed")
-        console.log("1 second passed")
     }, 200)
-
 }
 
 function sound(x) {
@@ -41,63 +33,65 @@ function sound(x) {
     audio.play()
 }
 
+function startGame() {
+    if (started) return
 
-$(".btn").on("click", handleButtonClick)  
+    started = true
+    level = 0
+    gamePattern = []
+    $("#start-btn").text("Game Running")
+    nextSequence()
+}
+
+$(".btn").on("click", handleButtonClick)
+$("#start-btn").on("click", startGame)
 
 
 function checkAnswer() {
-
-    var currentIndex = userClickedPattern.length - 1   
+    var currentIndex = userClickedPattern.length - 1
 
     if (gamePattern[currentIndex] === userClickedPattern[currentIndex]) {
         if (userClickedPattern.length === gamePattern.length) {
+            clickAble = false
             setTimeout(function () {
-                nextSequence()   
-            }, 1000)   
+                nextSequence()
+            }, 1000)
         }
     } else {
-        end()   
+        end()
     }
 }
-
-$(document).on("keydown", function () {
-    if (!started) {
-        $("h1").text("Level " + level)   
-        nextSequence()   
-        started = true   
-    }
-})
 
 function end() {
     clickAble = false
-    var audio = new Audio("sounds/wrong.mp3")
-    audio.play()
+    sound("wrong")
 
-    $("body").addClass("game-over")   
+    $("body").addClass("game-over")
 
     setTimeout(function () {
-        $("body").removeClass("game-over") 
+        $("body").removeClass("game-over")
 
         if (level > highScore) {
-            highScore = level   
-            $("h1").text("Game Over! You Got a High Score: " + level)   
-            $("#highScore").text("High Score: " + highScore)   
+            highScore = level
+            $("#level-title").text("Game Over! New High Score: " + level)
+            $("#highScore").text("High Score: " + highScore)
         } else {
-            $("h1").text("Game Over! Your Score: " + level)   
+            $("#level-title").text("Game Over! Your Score: " + level)
         }
 
         setTimeout(function () {
-            $("h1").text("Press Any Key to Restart")   
-            startOver()   
-        }, 3000)   
+            $("#level-title").text("Tap Start to Play")
+            $("#start-btn").text("Start Game")
+            startOver()
+        }, 1800)
 
-    }, 200)   
+    }, 200)
 }
 
 function startOver() {
-    level = 0   
-    gamePattern = []   
-    started = false    
+    level = 0
+    gamePattern = []
+    started = false
 }
 
 function handleButtonClick() {
@@ -109,5 +103,3 @@ function handleButtonClick() {
     userClickedPattern.push(userChoosenColor)
     checkAnswer()
 }
-
-
