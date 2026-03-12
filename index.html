@@ -11,7 +11,16 @@
 
 <body>
   <h1 id="level-title">Tap Start to Play</h1>
-  <button id="start-btn" aria-label="Start Simon game">Start Game</button>
+  <div class="actions">
+    <button id="start-btn" aria-label="Start Simon game">Start Game</button>
+    <button id="how-to-play-btn" aria-expanded="false" aria-controls="how-to-play-panel">How to Play</button>
+  </div>
+  <section id="how-to-play-panel" class="how-to-play" aria-hidden="true">
+    <h2>How to Play</h2>
+    <p>Press <strong>Start Game</strong> to begin. Watch the flashing color sequence, then repeat it in the same order.</p>
+    <p>You can click/tap the color pads, or on laptop use <strong>r, b, g, y</strong> keys.</p>
+    <p>Each round adds one new color. A wrong move ends the game.</p>
+  </section>
   <div class="container">
     <div class="row">
 

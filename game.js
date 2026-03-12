@@ -7,6 +7,13 @@ var started = false
 var highScore = 0
 var clickAble = false
 
+var keyToColor = {
+    r: "red",
+    b: "blue",
+    g: "green",
+    y: "yellow"
+}
+
 function nextSequence() {
     level++
     $("#level-title").text("Level " + level)
@@ -46,6 +53,23 @@ function startGame() {
 $(".btn").on("click", handleButtonClick)
 $("#start-btn").on("click", startGame)
 
+$("#how-to-play-btn").on("click", function () {
+    var panel = $("#how-to-play-panel")
+    var isOpen = panel.hasClass("is-open")
+
+    panel.toggleClass("is-open", !isOpen)
+    panel.attr("aria-hidden", isOpen ? "true" : "false")
+    $(this).attr("aria-expanded", isOpen ? "false" : "true")
+})
+
+$(document).on("keydown", function (event) {
+    var keyPressed = (event.key || "").toLowerCase()
+    var mappedColor = keyToColor[keyPressed]
+
+    if (!mappedColor) return
+
+    handleColorInput(mappedColor)
+})
 
 function checkAnswer() {
     var currentIndex = userClickedPattern.length - 1
@@ -94,12 +118,16 @@ function startOver() {
     started = false
 }
 
-function handleButtonClick() {
+function handleColorInput(userChoosenColor) {
     if (!clickAble) return
 
-    var userChoosenColor = $(this).attr("id")
     sound(userChoosenColor)
     animation(userChoosenColor)
     userClickedPattern.push(userChoosenColor)
     checkAnswer()
+}
+
+function handleButtonClick() {
+    var userChoosenColor = $(this).attr("id")
+    handleColorInput(userChoosenColor)
 }

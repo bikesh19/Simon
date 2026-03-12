@@ -11,6 +11,8 @@ A simple Simon Game built using HTML, CSS, JavaScript, and jQuery. The game chal
 - Game Over detection on wrong input
 - Restart functionality with high score tracking
 - Button-based start support for touch and desktop
+- Optional laptop keyboard controls: `r`, `b`, `g`, `y` for color input
+- In-app **How to Play** button with quick gameplay instructions
 
 ---
 
@@ -27,7 +29,7 @@ A simple Simon Game built using HTML, CSS, JavaScript, and jQuery. The game chal
 
 1. Tap or click the **Start Game** button to begin.
 2. Watch the pattern of flashing buttons and sounds.
-3. Repeat the pattern by clicking the buttons in the correct order.
+3. Repeat the pattern by clicking the buttons or pressing `r`, `b`, `g`, `y` on a laptop keyboard in the correct order.
 4. The pattern gets longer each round — how long can you last?
 5. If you make a mistake, the game ends and your score is displayed.
 6. Use the **Start Game** button again after game over to restart.
