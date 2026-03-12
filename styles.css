@@ -31,8 +31,7 @@ body {
   margin-bottom: 16px;
 }
 
-#start-btn,
-#how-to-play-btn {
+.action-btn {
   font-family: inherit;
   font-size: clamp(0.8rem, 2.2vw, 1rem);
   padding: 12px 18px;
@@ -43,10 +42,8 @@ body {
   cursor: pointer;
 }
 
-#start-btn:focus-visible,
-#start-btn:hover,
-#how-to-play-btn:focus-visible,
-#how-to-play-btn:hover {
+.action-btn:focus-visible,
+.action-btn:hover {
   outline: none;
   background-color: rgba(254, 242, 191, 0.15);
 }
